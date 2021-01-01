@@ -16,6 +16,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".RecyclerViewClickActivity"
+            android:parentActivityName=".MainActivity"
+            >
+            
+        </activity>
+        <activity
+            android:name=".GridViewClickActivity"
+            android:parentActivityName=".MainActivity"
+            >
+
+        </activity>
+
+        <activity
+            android:name=".tab3Calender"
+            android:parentActivityName=".MainActivity"
+            >
+
+        </activity>
     </application>
 
 </manifest>

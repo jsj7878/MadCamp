@@ -11,10 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Random;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Fragment1 extends Fragment {
-    private ArrayList<UserInfo> information = new ArrayList<>();
+    public ArrayList<UserInfo> information = new ArrayList<>();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,7 +35,6 @@ public class Fragment1 extends Fragment {
     public Fragment1() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -43,7 +50,8 @@ public class Fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
-        initData();
+        information.clear();
+        jsonParsing();
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
@@ -56,13 +64,46 @@ public class Fragment1 extends Fragment {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(context, information);
         recyclerView.setAdapter(adapter);
         // Inflate the layout for this fragment
+
         return view;
     }
 
-    private void initData(){
-        information.clear();
-        information.add(new UserInfo("정세진", "010-1111-1111", R.drawable.image1));
-        information.add(new UserInfo("정세진", "010-1111-1111", R.drawable.image2));
-        information.add(new UserInfo("정세진", "010-1111-1111", R.drawable.image3));
+
+    public ArrayList<UserInfo> jsonParsing()
+    {
+        String json="";
+        try {
+            InputStream is = getActivity().getAssets().open("user.json");
+            int fileSize = is.available();
+
+            byte[] buffer = new byte[fileSize];
+            is.read(buffer);
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+        try{
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray pArray = jsonObject.getJSONArray("info");
+            int[] images = {R.drawable.basic,R.drawable.basic2,R.drawable.basic3};
+
+            for(int i=0; i<pArray.length(); i++)
+            {
+                int rand = new Random().nextInt(images.length);
+                JSONObject pObject = pArray.getJSONObject(i);
+                UserInfo user = new UserInfo(pObject.getString("name"),pObject.getString("pn"), pObject.getString("email"), images[rand]);
+                information.add(user);
+            }
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return information;
     }
+
+
+
 }
