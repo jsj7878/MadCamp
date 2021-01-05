@@ -34,9 +34,7 @@
         android:hint="@string/texthint"
         android:inputType="textMultiLine"
         android:layout_marginTop="30dp"
-        android:visibility="visible"
-        android:imeOptions="actionDone"
-        />
+        android:visibility="visible" />
 
     <Button
             android:id="@+id/save_Btn"
