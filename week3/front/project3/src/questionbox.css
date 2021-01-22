@@ -1,0 +1,60 @@
+
+.questionbox{ 
+    @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+    
+    font-family: 'BMHANNAAir', cursive;
+    color:rgb(10, 19, 99);
+    background-color:rgba(255, 255, 255, 0.75);
+    padding-top:20px;
+    padding-bottom:70px;
+    margin-top:10px;
+    justify-content:center;
+    width:50%;
+    text-align: center;
+    height:70%;
+    border-radius: 50px;
+    position: absolute;
+    top:60%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:1000;
+}
+
+
+.submitbutton{
+  background:rgb(10, 19, 99);
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.submitbutton:hover{
+  background:#fff;
+  color:rgb(10, 19, 99);
+}
+.submitbutton:before,.submitbutton:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: rgb(10, 19, 99);
+  transition:400ms ease all;
+}
+.submitbutton:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.submitbutton:hover:before,.submitbutton:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+

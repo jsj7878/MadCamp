@@ -1,0 +1,50 @@
+.ContentPage{
+    width : 300px;
+    background-color: black;
+    margin-left : 10px;
+    
+}
+
+.cardContainer{
+    display: flex;
+}
+
+.list{
+    columns: 4;
+
+}
+
+.buttonGroup{
+    
+    font-size: 20;
+    margin:0 auto;
+}
+
+.classfication{
+    width:200px;
+    height:50px;    
+    background-color:rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    color:rgb(10, 19, 99)!important;
+    font-family: 'BMHANNAAir'!important;
+    font-weight: 800 !important;
+    font-size:x-large !important;
+}
+
+.map{
+    width:500px;
+    height:600px;
+}
+
+.table{
+    width:auto;
+    padding:70px;
+    padding-top:30px;
+    height:max-content;
+    text-align: center;
+    margin: 0 auto;
+    
+    margin-top:50px;
+    background-color:rgba(255, 255, 255, 0.75);
+    border-radius: 35px;
+}
